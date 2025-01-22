@@ -1,5 +1,5 @@
-from stomppy.i_frame import IFrame
-from stomppy.stomp_headers import StompHeaders
+from src.stomppy.i_frame import IFrame
+from src.stomppy.stomp_headers import StompHeaders
 from typing import Callable
 
 """

@@ -1,4 +1,4 @@
-from stomppy.rtypes import Uint8Array
+from src.stomppy.rtypes import Uint8Array
 
 
 class TextEncoder:

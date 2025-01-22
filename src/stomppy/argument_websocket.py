@@ -3,8 +3,8 @@ import datetime
 import random
 from typing import Callable
 
-from stomppy.rtypes import EventParams
-from stomppy.ltypes import IStompSocket
+from src.stomppy.rtypes import EventParams
+from src.stomppy.ltypes import IStompSocket
 
 """
  * @internal

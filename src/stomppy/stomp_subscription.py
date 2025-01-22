@@ -1,6 +1,6 @@
 from typing import Callable
 
-from stomppy.stomp_headers import StompHeaders
+from src.stomppy.stomp_headers import StompHeaders
 
 """
  * Call [Client#subscribe]{@link Client#subscribe} to create a StompSubscription.

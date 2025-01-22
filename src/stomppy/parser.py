@@ -1,9 +1,9 @@
-from typing import List, Callable, Tuple
+from typing import Callable
 import traceback
 
-from stomppy.ltypes import IRawFrameType, RawHeaderType
-from stomppy.enc_dec import TextEncoder, TextDecoder
-from stomppy.rtypes import ArrayBuffer, Uint8Array
+from src.stomppy.ltypes import IRawFrameType, RawHeaderType
+from src.stomppy.enc_dec import TextEncoder, TextDecoder
+from src.stomppy.rtypes import ArrayBuffer, Uint8Array
 
 """
  * @internal

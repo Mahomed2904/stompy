@@ -1,11 +1,11 @@
 from abc import ABC
 from enum import Enum
 
-from stomppy.i_frame import IFrame
-from stomppy.i_message import IMessage
-from stomppy.stomp_headers import StompHeaders
-from stomppy.rtypes import ArrayBuffer, Uint8Array
-from stomppy.versions import Versions
+from src.stomppy.i_frame import IFrame
+from src.stomppy.i_message import IMessage
+from src.stomppy.stomp_headers import StompHeaders
+from src.stomppy.rtypes import Uint8Array
+from src.stomppy.versions import Versions
 
 from typing import Callable, Any, List, Tuple
 

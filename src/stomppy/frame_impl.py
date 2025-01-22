@@ -1,9 +1,9 @@
-from stomppy.byte import BYTE
-from stomppy.i_frame import IFrame, FrameParams
-from stomppy.stomp_headers import StompHeaders
-from stomppy.rtypes import ArrayBuffer, Uint8Array
-from stomppy.ltypes import IRawFrameType
-from stomppy.enc_dec import TextDecoder, TextEncoder
+from src.stomppy.byte import BYTE
+from src.stomppy.i_frame import IFrame, FrameParams
+from src.stomppy.stomp_headers import StompHeaders
+from src.stomppy.rtypes import ArrayBuffer, Uint8Array
+from src.stomppy.ltypes import IRawFrameType
+from src.stomppy.enc_dec import TextDecoder, TextEncoder
 import re
 
 '''

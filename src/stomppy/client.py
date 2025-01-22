@@ -1,14 +1,14 @@
 import asyncio
 import time
-from typing import List, Callable, Any
-from stomppy.i_transaction import ITransaction
-from stomppy.stomp_config import StompConfig
-from stomppy.stomp_headers import StompHeaders
-from stomppy.ltypes import StomptHandlerConfig
-from stomppy.stomp_handler import StompHandler
-from stomppy.stomp_subscription import StompSubscription
-from stomppy.rtypes import Promise, DeativateOptions
-from stomppy.ltypes import (
+from typing import Callable, Any
+from src.stomppy.i_transaction import ITransaction
+from src.stomppy.stomp_config import StompConfig
+from src.stomppy.stomp_headers import StompHeaders
+from src.stomppy.ltypes import StomptHandlerConfig
+from src.stomppy.stomp_handler import StompHandler
+from src.stomppy.stomp_subscription import StompSubscription
+from src.stomppy.rtypes import Promise, DeativateOptions
+from src.stomppy.ltypes import (
     ActivationState,
     CloseEventCallbackType,
     DebugFnType,
@@ -19,9 +19,9 @@ from stomppy.ltypes import (
     StompSocketState,
     WsErrorCallbackType,
 )
-from stomppy.web_socket import WebSocket
-from stomppy.versions import Versions
-from stomppy.utils import clearTimeout, setTimeout, ScheduleTimer
+from src.stomppy.web_socket import WebSocket
+from src.stomppy.versions import Versions
+from src.stomppy.utils import clearTimeout, setTimeout, ScheduleTimer
 
 '''
  * @internal
@@ -214,7 +214,7 @@ class Client:
     @property
     def connected(self) -> bool:
         while self.webSocket.readyState == StompSocketState.CONNECTING:
-            time.sleep(0.2)
+            time.sleep(0.1)
         return self._stompHandler and self._stompHandler.connected
 
     """

@@ -1,11 +1,11 @@
 from typing import Any, Callable
 
-from stomppy.stomp_headers import StompHeaders
-from stomppy.ltypes import (ActivationState, CloseEventCallbackType,
-                            DebugFnType, FrameCallbackType, MessageCallbackType,
-                            WsErrorCallbackType)
-from stomppy.versions import Versions
-from stomppy.rtypes import Promise
+from src.stomppy.stomp_headers import StompHeaders
+from src.stomppy.ltypes import (ActivationState, CloseEventCallbackType,
+                                DebugFnType, FrameCallbackType, MessageCallbackType,
+                                WsErrorCallbackType)
+from src.stomppy.versions import Versions
+from src.stomppy.rtypes import Promise
 
 """
  * Configuration options for STOMP Client, each key corresponds to

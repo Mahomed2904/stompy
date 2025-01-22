@@ -3,7 +3,7 @@ import time
 from typing import List
 import websocket
 
-from stomppy.ltypes import IStompSocket, StompSocketState, StompSocketMessageEvent
+from src.stomppy.ltypes import IStompSocket, StompSocketState, StompSocketMessageEvent
 
 
 class WebSocket(IStompSocket):

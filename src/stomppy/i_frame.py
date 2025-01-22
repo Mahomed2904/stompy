@@ -1,8 +1,8 @@
 from abc import ABC
 from typing import List
-from stomppy.rtypes import Uint8Array
+from src.stomppy.rtypes import Uint8Array
 
-from stomppy.stomp_headers import StompHeaders
+from src.stomppy.stomp_headers import StompHeaders
 
 """
  * It represents a STOMP frame. Many of the callbacks pass an IFrame received from

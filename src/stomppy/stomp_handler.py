@@ -2,18 +2,18 @@ import copy
 import datetime
 from typing import Dict, Any
 
-from stomppy.i_message import Message
-from stomppy.byte import BYTE
-from stomppy.frame_impl import FrameImpl
-from stomppy.i_transaction import ITransaction
-from stomppy.parser import Parser
-from stomppy.stomp_headers import StompHeaders
-from stomppy.enc_dec import TextDecoder, TextEncoder
-from stomppy.i_frame import FrameParams, IFrame
-from stomppy.i_transaction import Transaction
-from stomppy.utils import ScheduleTimer
-from stomppy.stomp_subscription import StompSubscription
-from stomppy.ltypes import (
+from src.stomppy.i_message import Message
+from src.stomppy.byte import BYTE
+from src.stomppy.frame_impl import FrameImpl
+from src.stomppy.i_transaction import ITransaction
+from src.stomppy.parser import Parser
+from src.stomppy.stomp_headers import StompHeaders
+from src.stomppy.enc_dec import TextDecoder, TextEncoder
+from src.stomppy.i_frame import FrameParams, IFrame
+from src.stomppy.i_transaction import Transaction
+from src.stomppy.utils import ScheduleTimer
+from src.stomppy.stomp_subscription import StompSubscription
+from src.stomppy.ltypes import (
     CloseEventCallbackType,
     DebugFnType,
     FrameCallbackType,
@@ -25,9 +25,9 @@ from stomppy.ltypes import (
     StompSocketState,
     WsErrorCallbackType,
 )
-from stomppy.versions import Versions
-from stomppy.argument_websocket import augmentWebsocket
-from stomppy.utils import setInterval, clearInterval
+from src.stomppy.versions import Versions
+from src.stomppy.argument_websocket import augmentWebsocket
+from src.stomppy.utils import setInterval, clearInterval
 
 """
  * The STOMP protocol handler
