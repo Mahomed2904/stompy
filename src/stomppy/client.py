@@ -88,7 +88,7 @@ class Client:
     connectionTimeout: int = 0
 
     # As per https://stackoverflow.com/questions/45802988/typescript-use-correct-version-of-settimeout-node-vs-window/56239226#56239226
-    _connectionWatcher: ScheduleTimer | None = None # Timer
+    _connectionWatcher: ScheduleTimer | None = None  # Timer
 
     """
     *  automatically reconnect with delay in milliseconds, set to 0 to disable.
@@ -213,8 +213,8 @@ class Client:
 
     @property
     def connected(self) -> bool:
-        while self.webSocket.readyState == StompSocketState.CONNECTING:
-            time.sleep(0.1)
+        if self.webSocket is None or self.webSocket.readyState == StompSocketState.CONNECTING:
+            return False
         return self._stompHandler and self._stompHandler.connected
 
     """
@@ -519,7 +519,8 @@ class Client:
         elif self.brokerURL:
             webSocket = WebSocket(
                 self.brokerURL,
-                self.stompVersions.protocol_versions()
+                self.stompVersions.protocol_versions(),
+                header=self.connectHeaders
             )
         else:
             raise Exception('Either brokerURL or webSocketFactory must be provided')
@@ -529,7 +530,7 @@ class Client:
     def _schedule_reconnect(self):
         if self.reconnectDelay > 0:
             self.debug(f"STOMP: scheduling reconnection in ${self.reconnectDelay}ms")
-        self._reconnector = setTimeout(lambda: self._connect(), self.reconnectDelay)
+        self._reconnector = setTimeout(lambda: lambda: asyncio.run(self._connect()), self.reconnectDelay)
 
     """
     * Disconnect if connected and stop auto reconnect loop.
@@ -602,8 +603,10 @@ class Client:
     """
 
     def forceDisconnect(self):
+        self._changeState(ActivationState.DEACTIVATING)
         if self._stompHandler:
             self._stompHandler.forceDisconnect()
+        self._changeState(ActivationState.INACTIVE)
 
     def _disposeStompHandler(self):
         # Dispose STOMP Handler

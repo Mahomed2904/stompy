@@ -138,7 +138,8 @@ class FrameImpl(IFrame):
         if (self.isBinaryBody or
                 (not self._isBodyEmpty() and not self.skipContentLengthHeader)):
             lines.append(f"content-length:{self._bodyLength()}")
-            lines.append(f"body:{self._body}")
+            if self._body:
+                lines.append(f"body:{self._body}")
         return BYTE.LF.join(lines) + BYTE.LF + BYTE.LF
 
     def _isBodyEmpty(self) -> bool:

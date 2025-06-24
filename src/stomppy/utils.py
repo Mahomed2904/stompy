@@ -3,7 +3,6 @@ import threading
 
 
 class ScheduleTimer:
-
     # Static vars
     __count: int = 1
 
@@ -19,21 +18,25 @@ class ScheduleTimer:
 
 def setTimeout(callback, timeout):
     timer = ScheduleTimer(True)
+
     def fun(timer):
-        time.sleep(timeout/1000)
+        time.sleep(timeout / 1000)
         if timer.continue_running:
             callback()
+
     threading.Thread(target=fun, args=(timer,), name=f"setTimeout-{timer.id}", daemon=True).start()
     return timer
 
 
 def setInterval(callback, interval):
     timer = ScheduleTimer(True)
+
     def fun(timer):
         while timer.continue_running:
-            time.sleep(interval/1000)
+            time.sleep(interval / 1000)
             if timer.continue_running:
                 callback()
+
     threading.Thread(target=fun, args=(timer,), name=f"setInterval-{ScheduleTimer.id}", daemon=True).start()
     return timer
 
@@ -44,4 +47,3 @@ def clearInterval(timer):
 
 def clearTimeout(timer):
     timer.continue_running = False
-

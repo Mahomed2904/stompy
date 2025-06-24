@@ -8,10 +8,10 @@ from src.stomppy.ltypes import IStompSocket, StompSocketState, StompSocketMessag
 
 class WebSocket(IStompSocket):
 
-    def __init__(self, url: str, protocols: str | List[str] | None):
+    def __init__(self, url: str, protocols: str | List[str] | None, header: dict[str, str] | None = None):
         self.url = url
         self.protocols = protocols
-        self.ws = websocket.WebSocketApp(self.url, header={})
+        self.ws = websocket.WebSocketApp(self.url, header=header)
         self.ws.on_open = self._on_open
         self.ws.on_message = self._on_message
         self.ws.on_close = self._on_close
@@ -19,7 +19,7 @@ class WebSocket(IStompSocket):
         self.thread = threading.Thread(target=self.run_websocket, name="Web socket thread")
         self.readyState = StompSocketState.CONNECTING
         self.thread.start()
-        threading.Thread(target=self._look_timeout, name="Check timeout thread", args=(5000,)).start()
+        # threading.Thread(target=self._look_timeout, name="Check timeout thread", args=(5000,)).start()
 
     def run_websocket(self):
         self.ws.run_forever()
@@ -45,7 +45,7 @@ class WebSocket(IStompSocket):
         self._clean_up()
 
     def _on_error(self, ws_app, error, *args):
-        # print(error, args)
+        print(error, args)
         if self.onerror:
             self.onerror(ws_app)
 
